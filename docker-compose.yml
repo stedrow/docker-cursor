@@ -1,0 +1,16 @@
+services:
+  cursor:
+    image: cursor-arm64
+    build:
+      context: .
+      dockerfile: cursor-arm64.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - TITLE=Cursor AI
+    restart: unless-stopped
